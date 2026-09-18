@@ -1,31 +1,132 @@
-cat > .gitignore << 'EOF'
+# ==============================
 # Python
+# ==============================
+
 __pycache__/
 *.py[cod]
-*.so
+*$py.class
 
-# Virtual environments
-.venv/
+# Python virtual environments
 venv/
+.venv/
 env/
+ENV/
 
-# Jupyter
-.ipynb_checkpoints/
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
 
-# Environment / secrets
+
+# ==============================
+# Environment & Secrets
+# ==============================
+
 .env
 .env.*
+!.env.example
 
-# ML artifacts
-models/
-results/
-data/raw/
-data/processed/
 
-# IDE
+# ==============================
+# IDE / Editors
+# ==============================
+
 .vscode/
 .idea/
 
-# OS
-.DS_Store
+# VS Code settings that may contain machine-specific config
+*.code-workspace
+
+
+# ==============================
+# Operating System
+# ==============================
+
+# Windows
 Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+
+# ==============================
+# Jupyter Notebook
+# ==============================
+
+.ipynb_checkpoints/
+
+
+# ==============================
+# Logs
+# ==============================
+
+*.log
+logs/
+
+
+# ==============================
+# Dataset / Audio Files
+# ==============================
+
+# Raw datasets
+data/raw/*
+
+# Processed/generated datasets
+data/processed/*
+
+# Audio files
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.aac
+
+
+# ==============================
+# Generated CSV / Dataset Files
+# ==============================
+
+data/*.csv
+
+
+# ==============================
+# Machine Learning Models
+# ==============================
+
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.keras
+*.pkl
+*.joblib
+
+models/
+
+
+# ==============================
+# Experiment Outputs
+# ==============================
+
+runs/
+outputs/
+experiments/
+checkpoints/
+
+
+# ==============================
+# Temporary Files
+# ==============================
+
+*.tmp
+*.temp
+*.bak
+*.swp
