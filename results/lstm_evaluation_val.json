@@ -1,0 +1,17 @@
+{
+    "split": "val",
+    "total_samples": 24844,
+    "accuracy": 0.8667,
+    "precision": 0.9986,
+    "recall": 0.8527,
+    "f1_score": 0.9199,
+    "roc_auc": 0.9806,
+    "eer": 0.0717,
+    "eer_threshold": 0.0313,
+    "confusion_matrix": {
+        "tn_real": 2521,
+        "fp_fake": 27,
+        "fn_real": 3285,
+        "tp_fake": 19011
+    }
+}

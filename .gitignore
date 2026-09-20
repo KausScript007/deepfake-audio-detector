@@ -1,31 +1,73 @@
-cat > .gitignore << 'EOF'
-# Python
+# ==============================================================================
+# Python & Bytecode
+# ==============================================================================
 __pycache__/
 *.py[cod]
+*$py.class
 *.so
+.Python
 
-# Virtual environments
+# ==============================================================================
+# Virtual Environments & Packaging
+# ==============================================================================
 .venv/
 venv/
+ENV/
 env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Jupyter
-.ipynb_checkpoints/
-
-# Environment / secrets
-.env
-.env.*
-
-# ML artifacts
-models/
-results/
-data/raw/
-data/processed/
-
-# IDE
-.vscode/
+# ==============================================================================
+# IDEs and Editors
+# ==============================================================================
 .idea/
-
-# OS
+.vscode/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
+
+# ==============================================================================
+# Datasets & Large Binary Audio Files
+# (Keep manifest.csv tracked if needed, ignore large audio directories)
+# ==============================================================================
+data/raw/
+data/external/
+*.flac
+*.wav
+*.mp3
+*.m4a
+*.tar
+*.tar.gz
+*.zip
+
+# ==============================================================================
+# Model Checkpoints & Training Artifacts
+# ==============================================================================
+models/*.pt
+models/*.pth
+models/*.onnx
+checkpoints/
+logs/
+runs/
+*.log
+
+# ==============================================================================
+# Temporary / Scratch Verification Scripts
+# ==============================================================================
+verify_setup.py
+scratch/

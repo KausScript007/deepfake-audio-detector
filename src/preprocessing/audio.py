@@ -1,3 +1,5 @@
+import subprocess
+
 import librosa
 import numpy as np
 
@@ -8,15 +10,45 @@ def load_audio(
 ):
     """
     Load an audio file as mono audio at the target sample rate.
+
+    FFmpeg is used for decoding because some ASVspoof
+    FLAC files are not reliably decoded by libsndfile.
     """
-    audio, sr = librosa.load(
-        file_path,
-        sr=sample_rate,
-        mono=True
+
+    command = [
+        "ffmpeg",
+        "-v",
+        "error",
+        "-i",
+        str(file_path),
+        "-f",
+        "f32le",
+        "-acodec",
+        "pcm_f32le",
+        "-ac",
+        "1",
+        "-ar",
+        str(sample_rate),
+        "-"
+    ]
+
+    result = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=True
     )
+
+    audio = np.frombuffer(
+        result.stdout,
+        dtype=np.float32
+    )
+
     audio, _ = librosa.effects.trim(audio)
-    audio = librosa.util.normalize(audio)   #different audios can have different volume levels
-    return audio, sr
+
+    audio = librosa.util.normalize(audio)
+
+    return audio, sample_rate
 
 
 def segment_audio(
